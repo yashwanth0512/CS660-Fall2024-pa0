@@ -14,6 +14,7 @@
 namespace db {
 class Database {
   // TODO pa1: add private members
+ std::unordered_map<std::string, std::unique_ptr<DbFile>> catalog;
   
   BufferPool bufferPool;
 
@@ -35,7 +36,6 @@ public:
 
   /**
    * @brief Adds a new file to the Database.
-   * @param name The name of the file.
    * @param file The file to add.
    * @throws std::logic_error if the file name already exists.
    * @note This method takes ownership of the DbFile.
