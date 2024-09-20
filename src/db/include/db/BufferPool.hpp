@@ -18,6 +18,13 @@ constexpr size_t DEFAULT_NUM_PAGES = 50;
 class BufferPool {
   // TODO pa1: add private members
 
+ std::list<const PageId> lruList;
+ std::unordered_map<const PageId, std::list<const PageId>::iterator> lruMap;
+ size_t capacity;
+  std::array<Page, DEFAULT_NUM_PAGES> pages;
+ std::unordered_map<const PageId,size_t> pid_to_index;
+ std::unordered_map<const PageId,bool>dirtyPages;
+
 public:
   /**
    * @brief: Constructs a BufferPool object with the default number of pages.
